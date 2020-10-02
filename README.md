@@ -1,6 +1,6 @@
 # Besteeth
 
-(Comments -- Text subtracted of private own documentation. For more info contact me)
+(Comments -- Text subtracted from private own documentation. For more info contact me)
 
 This is my biggest project until the date. Contact me whatever is your doubt! I passed my final project of 3 months with a mark of 10. I spent a lot of hours in the development of this project. For more questions asked me.
 
