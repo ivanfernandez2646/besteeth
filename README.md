@@ -1,6 +1,7 @@
 # Besteeth
 
-<div class="text-red">(Comments -- Text subtracted of private own documentation. For more info contact me)</div>
+(Comments -- Text subtracted of private own documentation. For more info contact me)
+
 
 In the following document the work developed for the realization of an administrative management system for dental clinics is exposed, 
 which combines a server part performed in an ERP (Enterprise Resource Planning) called Odoo, together with a client part developed in Android.
