@@ -1,0 +1,108 @@
+<resources>
+    <string name="app_name">BesTeeth</string>
+
+    <!-- Log In -->
+    <string name="tvAdvertenciaLogIn">Asegúrese de tener una cuenta de correo asociada en su clínica de confianza</string>
+    <string name="tvPoweredByBesteeth">Powered by BesTeeth</string>
+
+    <!-- Log In Google -->
+    <string name="msg_ApiExceptionGoogle">Se ha producido un problema al conectar con su cuenta de Google</string>
+    <string name="msg_ErrorNoClienteOdoo">ERROR. No se encuentra registrado en el sistema. Contacte con su clínica de confianza</string>
+
+    <!-- Menu Bottom Navigation Bar -->
+    <string name="menuItem_Inicio">Inicio</string>
+    <string name="menuItem_Citas">Citas</string>
+    <string name="menuItem_Info">Info</string>
+    <string name="menuItem_MiCuenta">Mi cuenta</string>
+
+    <!-- Menu Sign Out -->
+    <string name="menuItem_SignOut">Salir</string>
+
+    <!-- Menu Filtro Citas -->
+    <string name="menuItem_FiltroCitas">Filtrar</string>
+
+    <!-- InicioFragment -->
+    <string name="tv_Bienvenido">Bienvenid@</string>
+    <string name="tv_ProximasCitas">Próximas citas</string>
+    <string name="tv_GastosTotales">Tus gastos:</string>
+    <string name="tv_SinResultados">Sin resultados</string>
+    <string name="dlg_AltaCitaOK">Alta de cita correcta</string>
+    <string name="dlg_AltaCitaKO">ERROR!! La solicitud de alta de cita no se ha realizado correctamente</string>
+    <string name="dlg_BajaCitaOK">Baja de cita correcta</string>
+    <string name="dlg_BajaCitaKO">ERROR!! La solicitud de baja de cita no se ha realizado correctamente</string>
+    <string name="dlg_AplazarCita1DiaOK">Aplazamiento de cita realizado correctamente</string>
+    <string name="dlg_AplazarCita1DiaKO">ERROR!! La solicitud de aplazamiento de cita no se ha realizado correctamente</string>
+    <string name="dlg_ServicioKO">Es necesario seleccionar un servicio para continuar. En caso de que no aparezcan vuelva a intentar añadir la cita</string>
+
+    <!-- DlgInsertarCita -->
+    <string name="et_FechaDlg">Seleccione una fecha</string>
+    <string name="et_HoraDlg">Seleccione una hora</string>
+    <string name="tv_FechaDlg">Fecha:</string>
+    <string name="tv_HoraDlg">Hora:</string>
+    <string name="tv_ServicioDlg">Servicio:</string>
+    <string name="tv_InsertarCitaAlta">Insertar Cita</string>
+    <string name="tv_InsertarCitaAplazar">Aplazar Cita</string>
+    <string name="bt_Dlg">..</string>
+
+    <!-- DlgFiltroCita -->
+    <string name="tv_FiltroCabecera">FILTRO DE CITAS</string>
+    <string name="tv_FiltroCerrada">¿Pagada?:</string>
+    <string name="tv_FiltroModalidadPago">Modalidad Pago:</string>
+
+    <!-- DlgInformaciónCita -->
+    <string name="tv_InformacionCita">Información de Cita</string>
+    <string name="tv_DoctorDlg">Doctor:</string>
+    <string name="tv_NoDoctor">Sin asignar</string>
+    <string name="tv_CerradaOK">PAGADA</string>
+    <string name="tv_CerradaKO">NO PAGADA</string>
+
+    <string name="tv_FechaTable">Fecha</string>
+    <string name="tv_PagoTable">Pago(€)</string>
+    <string name="tv_CuotasTable">Cuotas</string>
+    <string name="tv_PagadasTable">Pagadas</string>
+    <string name="tv_RestantesTable">Restantes</string>
+    <string name="tv_SubtotalTable">SUBTOTAL(€)</string>
+    <string name="tv_TotalTable">TOTAL(€)</string>
+
+
+    <!-- MiCuentaFragment -->
+    <string name="tv_Dni">DNI</string>
+    <string name="tv_Nombre">Nombre *</string>
+    <string name="tv_Direccion">Dirección *</string>
+    <string name="tv_Telefono">Teléfono *</string>
+    <string name="tv_Email">Email</string>
+
+    <!-- Diálogos -->
+    <string name="bt_Aceptar">Aceptar</string>
+    <string name="bt_Cancelar">Cancelar</string>
+    <string name="bt_PickerDialog">..</string>
+
+    <!-- Mensajes -->
+    <string name="msg_Error">ERROR!!</string>
+    <string name="msg_DatosObligatorios">Datos obligatorios!!</string>
+    <string name="msg_ErrorEstableciendoConexion">Se ha producido un error estableciendo \n la conexión con el servidor</string>
+    <string name="msg_FaltanDatosObligatorios">ERROR!! Faltan datos obligatorios</string>
+    <string name="msg_RegexEmailKO">Email no es una dirección de correo válida</string>
+    <string name="msg_RegexTelefonoKO">Teléfono no posee 9 dígitos</string>
+    <string name="msg_GuardarDatosClienteOK">Datos guardados correctamente</string>
+    <string name="msg_GuardarDatosClienteKO">ERROR!! Los datos no se pudieron guardar correctamente</string>
+    <string name="msg_RecuperarDatosClienteKO">ERROR!! No se pudieron recuperar los datos correctamente</string>
+    <string name="msg_Escoge">Escoge</string>
+    <string name="msg_CerrarSesion">¿Está seguro de que desea cerrar la sesión?</string>
+    <string name="msg_CambioEmail">Hemos detectado un cambio en su email. Si se procesa la petición, la aplicación se cerrará. ¿Desea continuar?</string>
+    <string name="msg_EmailYaExiste">ERROR!! Este email ya se encuentra registrado en el sistema</string>
+    <string name="msg_ErrorAplazarCitaMismoDia">ERROR!! No se puede aplazar una cita en el mismo día en el que está establecida</string>>
+    <string name="msg_ConfirmacionBajaCita">¿Está seguro de que desea anular la cita correspondiente?</string>>
+    <string name="msg_FechaDlg">Fecha</string>
+    <string name="msg_HoraDlg">Hora</string>
+    <string name="msg_ServicioDlg">Servicio</string>
+    <string name="msg_DebeSeleccionarFecha">Debe seleccionar una fecha primero</string>
+    <string name="msg_ErrorConexionOdoo">Se ha producido un error estableciendo la conexión con el servidor</string>
+
+    <!-- Format -->
+    <string name="fecha_Format">%02d/%02d/%04d</string>
+    <string name="hora_Format">%02d:%02d</string>
+    <string name="si">Sí</string>
+    <string name="no">No</string>
+    <string name="no_Establecido">No establecido</string>
+</resources>

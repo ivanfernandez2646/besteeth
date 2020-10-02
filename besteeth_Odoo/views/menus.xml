@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+        <menuitem name="BesTeeth" id="besteeth.menu_root"/>
+
+        <menuitem name="Citas" id="besteeth.cita" parent="besteeth.menu_root" action="besteeth.cita_action_window"/>
+        <menuitem name="Pagos" id="besteeth.pago" parent="besteeth.menu_root" action="besteeth.pago_action_window"/>
+        <menuitem name="Gestión" id="besteeth.gestion" parent="besteeth.menu_root"/>
+        <menuitem name="Configuración" id="besteeth.configuracion" parent="besteeth.menu_root" action="besteeth.configuracion_action_window"/>
+
+        <menuitem name="Clientes" id="besteeth.cliente" parent="besteeth.gestion"
+                  action="besteeth.cliente_action_window"/>
+        <menuitem name="Doctores" id="besteeth.doctor" parent="besteeth.gestion"
+                  action="besteeth.doctor_action_window"/>
+        <menuitem name="Servicios" id="besteeth.servicio" parent="besteeth.gestion"
+                  action="besteeth.servicio_action_window"/>
+    </data>
+</odoo>

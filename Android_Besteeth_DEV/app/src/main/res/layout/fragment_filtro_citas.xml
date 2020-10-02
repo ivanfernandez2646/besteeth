@@ -1,0 +1,171 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".vista.fragmentos.FiltroCitasFragment">
+
+    <ProgressBar
+        android:id="@+id/pbFiltroCitas"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="24dp"
+        android:theme="@style/AppTheme.ProgressBar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFiltroCabecera"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="32dp"
+        android:layout_marginEnd="8dp"
+        android:background="@color/colorPrimary"
+        android:gravity="center_horizontal"
+        android:text="@string/tv_FiltroCabecera"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvFiltroFechaDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/tv_FechaDlg"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tvFiltroCabecera" />
+
+    <Button
+        android:id="@+id/btFiltroFechaDlg"
+        android:layout_width="45dp"
+        android:layout_height="45dp"
+        android:text="@string/bt_PickerDialog"
+        app:layout_constraintBottom_toBottomOf="@+id/etFiltroFechaDlg"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro2"
+        app:layout_constraintTop_toTopOf="@+id/etFiltroFechaDlg" />
+
+    <Button
+        android:id="@+id/btCancelar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="64dp"
+        android:text="@string/bt_Cancelar"
+        app:layout_constraintEnd_toStartOf="@+id/btAceptar"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFiltroModalidadPagoDlg" />
+
+    <Button
+        android:id="@+id/btAceptar"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/bt_Aceptar"
+        app:layout_constraintBaseline_toBaselineOf="@+id/btCancelar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/btCancelar" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glineFiltro1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.3" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/glineFiltro2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_percent="0.9" />
+
+    <TextView
+        android:id="@+id/tvFiltroServicioDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tv_ServicioDlg"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFiltroFechaDlg" />
+
+    <TextView
+        android:id="@+id/tvFiltroCerradaDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tv_FiltroCerrada"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFiltroServicioDlg" />
+
+    <TextView
+        android:id="@+id/tvFiltroModalidadPagoDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="32dp"
+        android:text="@string/tv_FiltroModalidadPago"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro1"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/tvFiltroCerradaDlg" />
+
+    <Spinner
+        android:id="@+id/spFiltroModalidadPagoDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFiltroModalidadPagoDlg"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro2"
+        app:layout_constraintStart_toEndOf="@+id/tvFiltroModalidadPagoDlg"
+        app:layout_constraintTop_toTopOf="@+id/tvFiltroModalidadPagoDlg" />
+
+    <Switch
+        android:id="@+id/swFiltroCerradaDlg"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:text="No"
+        app:layout_constraintBaseline_toBaselineOf="@+id/tvFiltroCerradaDlg"
+        app:layout_constraintStart_toEndOf="@+id/tvFiltroCerradaDlg" />
+
+    <Spinner
+        android:id="@+id/spFiltroServicioDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFiltroServicioDlg"
+        app:layout_constraintEnd_toStartOf="@+id/glineFiltro2"
+        app:layout_constraintStart_toStartOf="@+id/glineFiltro1"
+        app:layout_constraintTop_toTopOf="@+id/tvFiltroServicioDlg" />
+
+    <EditText
+        android:id="@+id/etFiltroFechaDlg"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="8dp"
+        android:ems="10"
+        android:enabled="false"
+        android:inputType="textPersonName"
+        app:layout_constraintBottom_toBottomOf="@+id/tvFiltroFechaDlg"
+        app:layout_constraintEnd_toStartOf="@+id/btFiltroFechaDlg"
+        app:layout_constraintStart_toEndOf="@+id/tvFiltroFechaDlg"
+        app:layout_constraintTop_toTopOf="@+id/tvFiltroFechaDlg" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

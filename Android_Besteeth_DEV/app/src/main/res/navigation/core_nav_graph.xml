@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/core_nav_graph"
+    app:startDestination="@id/inicioFragment">
+
+    <fragment
+        android:id="@+id/miCuentaFragment"
+        android:name="com.besteeth.vista.fragmentos.MiCuentaFragment"
+        android:label="fragment_mi_cuenta"
+        tools:layout="@layout/fragment_mi_cuenta" />
+    <fragment
+        android:id="@+id/citasFragment"
+        android:name="com.besteeth.vista.fragmentos.CitasFragment"
+        android:label="fragment_citas"
+        tools:layout="@layout/fragment_citas" >
+        <action
+            android:id="@+id/action_citasFragment_to_filtroCitasFragment"
+            app:destination="@id/filtroCitasFragment" />
+        <action
+            android:id="@+id/action_citasFragment_to_dlgInformacionCita"
+            app:destination="@id/dlgInformacionCita" />
+    </fragment>
+    <fragment
+        android:id="@+id/inicioFragment"
+        android:name="com.besteeth.vista.fragmentos.InicioFragment"
+        android:label="fragment_inicio"
+        tools:layout="@layout/fragment_inicio" >
+        <action
+            android:id="@+id/action_inicioFragment_to_citasFragment"
+            app:destination="@id/citasFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+        <action
+            android:id="@+id/action_inicioFragment_to_miCuentaFragment"
+            app:destination="@id/miCuentaFragment"
+            app:enterAnim="@anim/fragment_open_enter"
+            app:exitAnim="@anim/fragment_open_exit"
+            app:popEnterAnim="@anim/nav_default_pop_enter_anim"
+            app:popExitAnim="@anim/nav_default_pop_exit_anim" />
+    </fragment>
+    <dialog
+        android:id="@+id/dlgInsertarCita"
+        android:name="com.besteeth.vista.dialogos.DlgInsertarCita"
+        android:label="DlgInsertarCita" /><action android:id="@+id/action_global_dlgInsertarCita" app:destination="@id/dlgInsertarCita"/>
+    <fragment
+        android:id="@+id/filtroCitasFragment"
+        android:name="com.besteeth.vista.fragmentos.FiltroCitasFragment"
+        android:label="fragment_filtro_citas"
+        tools:layout="@layout/fragment_filtro_citas" />
+    <dialog
+        android:id="@+id/dlgConfirmacion"
+        android:name="com.besteeth.vista.dialogos.DlgConfirmacion"
+        android:label="DlgConfirmacion" />
+    <action android:id="@+id/action_global_dlgConfirmacion" app:destination="@id/dlgConfirmacion" />
+    <dialog
+        android:id="@+id/dlgInformacionCita"
+        android:name="com.besteeth.vista.dialogos.DlgInformacionCita"
+        android:label="DlgInformacionCita" />
+</navigation>

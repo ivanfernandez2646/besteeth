@@ -1,0 +1,112 @@
+<odoo>
+    <data>
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="besteeth_doctor_tree">
+            <field name="name">besteeth.doctor.tree</field>
+            <field name="model">besteeth.doctor</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="dni"/>
+                    <field name="nombre"/>
+                    <field name="apellidos" optional="hide"/>
+                    <field name="edad" optional="hide"/>
+                    <field name="sueldo"/>
+                    <field name="cita_ids" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form -->
+        <record model="ir.ui.view" id="besteeth_doctor_form">
+            <field name="name">besteeth.doctor.form</field>
+            <field name="model">besteeth.doctor</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="foto" class="oe_avatar" widget="image"/>
+                        <div class="oe_title">
+                          <label for="dni"/>
+                          <h1><field name="dni" placeholder="Indique el dni del doctor"/></h1>
+                        </div>
+                        <group col="2">
+                            <group string="Información general">
+                                <field name="nombre" placeholder="Indique el nombre del doctor"/>
+                                <field name="apellidos" placeholder="Indique los apellidos del doctor"/>
+                                <field name="edad" options='{"type": "number", "step": 1}' placeholder="Indique la edad del doctor"/>
+                                <label for="sueldo"/>
+                                <div>
+                                    <field name="sueldo" placeholder="Indique el sueldo del doctor" class="oe_inline"/>
+                                    <span class="oe_inline oe_read_only"> €</span>
+                                </div>
+                            </group>
+                            <notebook colspan="1">
+                                <page string="Citas">
+                                    <field name="cita_ids">
+                                        <tree>
+                                            <field name="fecha_hora"/>
+                                            <field name="cliente_id"/>
+                                            <field name="servicio_id"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search -->
+        <record model="ir.ui.view" id="besteeth_doctor_search">
+            <field name="name">besteeth.doctor.search</field>
+            <field name="model">besteeth.doctor</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="sin_cita" string="Doctores Nuevos Sin Citas"
+                            domain="[('cita_ids','=',False)]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Kanban -->
+        <record model="ir.ui.view" id="besteeth_doctor_kanban">
+            <field name="name">besteeth.doctor.kanban</field>
+            <field name="model">besteeth.doctor</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="foto"/>
+                    <field name="dni"/>
+                    <field name="nombre"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_module_vignette">
+                                <img class="oe_module_icon mr-3"
+                                     t-att-src="kanban_image('besteeth.doctor','foto',record.id.value)"/>
+                                <div class="oe_resource_details">
+                                    <h4 class="o_kanban_record_title">
+                                        <b><field name="dni"/></b>
+                                    </h4>
+                                    <field name="nombre"/>
+                                </div>
+                                <div class="oe_module_action mt-2">
+                                    <button type="edit" class="btn btn-xl btn-primary">Editar</button>
+                                    <button type="delete" class="btn btn-danger o_form_button_delete">Borrar</button>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <record model="ir.actions.act_window" id="besteeth.doctor_action_window">
+            <field name="name">Doctores</field>
+            <field name="res_model">besteeth.doctor</field>
+            <field name="view_mode">tree,form,search,kanban</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,23 @@
+<odoo>
+    <data>
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="besteeth_servicio_tree">
+            <field name="name">besteeth.servicio.tree</field>
+            <field name="model">besteeth.servicio</field>
+            <field name="arch" type="xml">
+                <tree editable="bottom">
+                    <field name="nombre"/>
+                    <field name="precio"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <record model="ir.actions.act_window" id="besteeth.servicio_action_window">
+            <field name="name">Servicios</field>
+            <field name="res_model">besteeth.servicio</field>
+            <field name="view_mode">tree</field>
+        </record>
+    </data>
+</odoo>

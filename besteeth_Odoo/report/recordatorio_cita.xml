@@ -1,0 +1,28 @@
+<odoo>
+    <report
+            id="report_recordatorio_cita"
+            model="besteeth.cita"
+            string="Recordatorio cita"
+            name="besteeth.report_recordatorio_cita_view"
+            file="besteeth.report_recordatorio_cita"
+            report_type="qweb-html"
+            menu="False"/>
+
+    <template id="besteeth.report_recordatorio_cita_view">
+        <t t-call="web.html_container">
+            <table>
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <h2 class="text-center">
+                            RECORDATORIO CITA
+                        </h2>
+                        <h3 class="text-center mt-4">Fecha: <span t-esc="doc.fecha_hora" t-options='{"widget": "date"}'/></h3>
+                        <h3 class="text-center">Hora: <span t-field="doc.fecha_hora" t-options='{"format": "HH:MM"}'/></h3>
+                        <h3 class="text-center">Paciente: <span t-field="doc.cliente_id"/></h3>
+                        <h5 class="text-center mt-3">Rogamos su puntualidad para un mejor servicio</h5>
+                    </t>
+                </t>
+            </table>
+        </t>
+    </template>
+</odoo>

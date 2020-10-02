@@ -1,0 +1,121 @@
+<odoo>
+    <data>
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="besteeth_cita_tree">
+            <field name="name">besteeth.cita.tree</field>
+            <field name="model">besteeth.cita</field>
+            <field name="arch" type="xml">
+                <tree decoration-danger="cerrada==False" decoration-success="cerrada==True" default_order="cerrada desc, fecha_hora desc">
+                    <field name="cliente_id"/>
+                    <field name="fecha_hora"/>
+                    <field name="servicio_id"/>
+                    <field name="doctor_id" optional="hide"/>
+                    <field name="pago_ids" optional="hide"/>
+                    <field name="cerrada" invisible="1"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form -->
+        <record model="ir.ui.view" id="besteeth_cita_form">
+            <field name="name">besteeth.cita.form</field>
+            <field name="model">besteeth.cita</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <widget name="web_ribbon" text="Cerrada" bg_color="bg-success" attrs="{'invisible': [('cerrada', '=', False)]}"/>
+                        <widget name="web_ribbon" text="No Cerrada" bg_color="bg-danger" attrs="{'invisible': ['|',('create_date', '=', False),('cerrada', '=', True)]}"/>
+                        <div class="oe_title">
+                          <label for="name" class="oe_read_only"/>
+                          <h1><field name="name"/></h1>
+                        </div>
+                        <group col="2">
+                            <group string="Información general">
+                                <field name="create_date" invisible="1"/>
+                                <field name="write_date" invisible="1"/>
+                                <field name="pago_iniciado" invisible="1"/>
+                                <field name="id" invisible="1"/>
+                                <field name="fecha_hora" placeholder="Indique la fecha y hora de la cita" options="{'datepicker': {
+                                    'calendarWeeks':False,
+                                    'daysOfWeekDisabled':[0,6],
+                                    'enabledHours': [9,10,11,12,13,14,15,16,17,18,19,20],
+                                    'stepping':'5',
+                                    'useCurrent':False
+                                    }
+                                }"
+                                       attrs="{'readonly': ['|',('pago_iniciado', '=', True),('atendida', '=', True)]}"/>
+                                <field name="doctor_id" required="1"/>
+                                <field name="cliente_id" attrs="{'readonly': [('id', '!=', False)]}"/>
+                                <field name="servicio_id" attrs="{'readonly': [('id', '!=', False)]}"/>
+                                <field name="atendida" attrs="{'invisible': [('write_date', '=', False)]}" force_save="1"/>
+                                <button name="imprimir_recordatorio_cita" type="object"
+                                    attrs="{'invisible':[('atendida','=',True)]}"
+                                    string="Imprimir recordatorio" icon="fa-print"/>
+                                <field name="cerrada" invisible="1"/>
+                            </group>
+                            <notebook colspan="1">
+                                <page string="Pagos">
+                                    <span attrs="{'invisible': [('write_date', '!=', False)]}"><strong style="color: red;">CITA NO CREADA AÚN, AL CREARLA LOS PAGOS ESTARÁN DISPONIBLES!!</strong></span>
+                                    <span attrs="{'invisible': [('cerrada', '!=',True)]}"><strong style="color: green;">CITA CERRADA. TODOS LOS PAGOS AL CORRIENTE!!</strong></span>
+                                    <div style="margin-bottom:10px">
+                                          <button name="%(lanzar_wizard_pago)d" type="action"
+                                                  attrs="{'invisible': ['|',('create_date', '=', False),('cerrada', '=', True)]}"
+                                                  context="{'default_cita_id':active_id,'default_cliente_id':cliente_id,'default_servicio_id':servicio_id,'default_servicio_id':servicio_id}"
+                                                  style="margin-right:10px"
+                                                  string="Añadir Pago" icon="fa-plus" class="btn-primary"/>
+                                    </div>
+                                    <field name="pago_ids" nolabel="1"
+                                           context="{'default_cita_id':active_id,'default_cliente_id':cliente_id,'default_servicio_id':servicio_id}"
+                                           attrs="{'invisible': [('write_date', '=', False)],'readonly': [('cerrada', '=', True)]}">
+                                        <tree>
+                                            <field name="cita_id"/>
+                                            <field name="modalidad_pago"/>
+                                            <field name="pago_cuota"/>
+                                            <field name="cantidad_cuotas"/>
+                                            <field name="cuotas_pagadas"/>
+                                            <field name="cuotas_restantes"/>
+                                            <field name="pago_total"/>
+                                        </tree>
+                                    </field>
+                                </page>
+                            </notebook>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Search -->
+        <record model="ir.ui.view" id="besteeth_cita_search">
+            <field name="name">besteeth.cita.search</field>
+            <field name="model">besteeth.cita</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="no_cerradas" string="Citas con pagos pendientes"
+                            domain="[('cerrada','=',False)]"/>
+                    <filter name="no_atendidas" string="Citas no atendidas"
+                            domain="[('atendida','=',False)]"/>
+                    <group>
+                        <filter name="agrupar_fecha" string="Fechas" context="{'group_by':'fecha_hora:day'}"/>
+                    </group>
+                    <group>
+                        <filter name="agrupar_clientes" string="Clientes" context="{'group_by':'cliente_id'}"/>
+                    </group>
+                    <group>
+                        <filter name="agrupar_doctores" string="Doctores" context="{'group_by':'doctor_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <record model="ir.actions.act_window" id="besteeth.cita_action_window">
+            <field name="name">Citas</field>
+            <field name="res_model">besteeth.cita</field>
+            <field name="view_mode">tree,form,graph</field>
+            <field name="context">{'search_default_no_cerradas': 1,'search_default_agrupar_fecha': 1}</field>
+        </record>
+
+    </data>
+</odoo>

@@ -1,0 +1,42 @@
+<odoo>
+    <data>
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="besteeth_configuracion_tree">
+            <field name="name">besteeth.configuracion.tree</field>
+            <field name="model">besteeth.configuracion</field>
+            <field name="arch" type="xml">
+                <tree delete="false">
+                    <field name="hora_apertura"/>
+                    <field name="hora_cierre"/>
+                    <field name="intervalo_minutos"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form -->
+        <record model="ir.ui.view" id="besteeth_configuracion_form">
+            <field name="name">besteeth.configuracion.form</field>
+            <field name="model">besteeth.configuracion</field>
+            <field name="arch" type="xml">
+                <form create="false" delete="false">
+                    <sheet>
+                        <group string="Configuración">
+                            <field name="hora_apertura" widget="float_time"/>
+                            <field name="hora_cierre" widget="float_time"/>
+                            <field name="intervalo_minutos" options='{"type": "number", "step": 5}'/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <record model="ir.actions.act_window" id="besteeth.configuracion_action_window">
+            <field name="name">Configuración</field>
+            <field name="res_model">besteeth.configuracion</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+
+    </data>
+</odoo>

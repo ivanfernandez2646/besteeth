@@ -1,0 +1,9 @@
+<?xml version="1.0" ?>
+<odoo>
+        <record id="group_admin" model="res.groups">
+            <field name="name">BesTeeth / Administración</field>
+        </record>
+        <record id="group_remote_client" model="res.groups">
+            <field name="name">BesTeeth / RemoteClient</field>
+        </record>
+</odoo>

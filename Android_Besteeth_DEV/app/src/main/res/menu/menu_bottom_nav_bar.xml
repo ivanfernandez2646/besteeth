@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/menuItem_Inicio"
+        android:icon="@drawable/ic_home"
+        android:title="@string/menuItem_Inicio"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menuItem_Citas"
+        android:icon="@drawable/ic_citas"
+        android:title="@string/menuItem_Citas"
+        app:showAsAction="always" />
+    <item
+        android:id="@+id/menuItem_MiCuenta"
+        android:icon="@drawable/ic_mi_cuenta"
+        android:title="@string/menuItem_MiCuenta"
+        app:showAsAction="always" />
+</menu>

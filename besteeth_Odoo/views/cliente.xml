@@ -1,0 +1,144 @@
+<odoo>
+    <data>
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="besteeth_cliente_tree">
+            <field name="name">besteeth.cliente.tree</field>
+            <field name="model">besteeth.cliente</field>
+            <field name="arch" type="xml">
+                <tree>
+                    <field name="dni"/>
+                    <field name="nombre"/>
+                    <field name="direccion" optional="hide"/>
+                    <field name="telefono"/>
+                    <field name="email" optional="hide"/>
+                    <field name="gastos_totales" optional="hide"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form -->
+        <record model="ir.ui.view" id="besteeth_cliente_form">
+            <field name="name">besteeth.cliente.form</field>
+            <field name="model">besteeth.cliente</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="foto" class="oe_avatar" widget="image"/>
+                        <div class="oe_title">
+                          <label for="dni"/>
+                          <h1><field name="dni" placeholder="Indique el dni del cliente"/></h1>
+                        </div>
+                        <group>
+                            <group string="Información general">
+                                <field name="nombre" placeholder="Indique el nombre del cliente"/>
+                                <field name="direccion" placeholder="Indique la dirección del cliente"/>
+                                <field name="telefono" placeholder="Indique el teléfono del cliente"/>
+                                <field name="email" placeholder="Indique el email del cliente"/>
+                            </group>
+                            <group string="Otros datos">
+                                <label for="gastos_totales"/>
+                                <div>
+                                    <field name="gastos_totales" class="oe_inline"/>
+                                    <span class="oe_inline oe_read_only"> €</span>
+                                </div>
+                            </group>
+                            <!-- Este campo nos sirve para tener en cuenta las citas y los pagos, ya que solo se tienen que mostrar cuando editas un cliente y no al ser creado -->
+                            <!-- Es controlado en la línea 51 -->
+                            <field name="write_date" invisible="1"/>
+                        </group>
+                        <notebook colspan="1">
+                            <page string="Citas">
+                                <field name="cita_ids" nolabel="1"
+                                       context="{'default_cliente_id':active_id}" attrs="{'invisible': [('write_date', '=', False)]}">
+                                    <tree>
+                                        <field name="fecha_hora"/>
+                                        <field name="cliente_id"/>
+                                        <field name="servicio_id"/>
+                                    </tree>
+                                </field>
+                            </page>
+                            <page string="Pagos">
+                                <field name="pago_ids" nolabel="1" attrs="{'invisible': [('write_date', '=', False)]}">
+                                    <tree>
+                                        <field name="cita_id"/>
+                                        <field name="modalidad_pago"/>
+                                        <field name="pago_cuota"/>
+                                        <field name="cantidad_cuotas"/>
+                                        <field name="cuotas_pagadas"/>
+                                        <field name="cuotas_restantes"/>
+                                        <field name="pago_total"/>
+                                    </tree>
+                                </field>
+                            </page>
+                        </notebook>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Graph -->
+        <record model="ir.ui.view" id="besteeth_cliente_graph">
+            <field name="name">besteeth.cliente.graph</field>
+            <field name="model">besteeth.cliente</field>
+            <field name="arch" type="xml">
+                <graph>
+                    <field name="dni"/>
+                    <field name="gastos_totales" type="measure"/>
+                </graph>
+            </field>
+        </record>
+
+        <!-- Search -->
+        <record model="ir.ui.view" id="besteeth_cliente_search">
+            <field name="name">besteeth.cliente.search</field>
+            <field name="model">besteeth.cliente</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="con_email" string="Clientes Con Email"
+                            domain="[('email','!=','')]"/>
+                </search>
+            </field>
+        </record>
+
+        <!-- Kanban -->
+        <record model="ir.ui.view" id="besteeth_cliente_kanban">
+            <field name="name">besteeth.cliente.kanban</field>
+            <field name="model">besteeth.cliente</field>
+            <field name="arch" type="xml">
+                <kanban>
+                    <field name="id"/>
+                    <field name="foto"/>
+                    <field name="dni"/>
+                    <field name="nombre"/>
+                    <templates>
+                        <t t-name="kanban-box">
+                            <div class="oe_module_vignette">
+                                <img class="oe_module_icon mr-3"
+                                     t-att-src="kanban_image('besteeth.cliente','foto',record.id.value)"/>
+                                <div class="oe_resource_details">
+                                    <h4 class="o_kanban_record_title">
+                                        <b><field name="dni"/></b>
+                                    </h4>
+                                    <field name="nombre"/>
+                                </div>
+                                <div class="oe_module_action mt-2">
+                                    <button type="edit" class="btn btn-xl btn-primary">Editar</button>
+                                    <button type="delete" class="btn btn-danger o_form_button_delete">Borrar</button>
+                                </div>
+                            </div>
+                        </t>
+                    </templates>
+                </kanban>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <record model="ir.actions.act_window" id="besteeth.cliente_action_window">
+            <field name="name">Clientes</field>
+            <field name="res_model">besteeth.cliente</field>
+            <field name="view_mode">tree,form,search,kanban,graph</field>
+        </record>
+
+    </data>
+</odoo>

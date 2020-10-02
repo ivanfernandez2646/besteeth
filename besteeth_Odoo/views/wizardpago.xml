@@ -1,0 +1,56 @@
+<odoo>
+    <data>
+
+        <!-- Form -->
+        <record model="ir.ui.view" id="besteeth_wizardpago_form">
+            <field name="name">besteeth.wizardpago.form</field>
+            <field name="model">besteeth.wizardpago</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <field name="cita_ids" widget="many2many_tags" readonly="1"/>
+                        <group col="2">
+                            <group string="Información general">
+                                <field name="fecha_hora" readonly="1" force_save="1"/>
+                                <field name="modalidad_pago" attrs="{'readonly': [('cuotas_pagadas','>=','1')]}" force_save="1"/>
+                                <field name="cliente_id"/>
+                                <field name="servicio_id"/>
+                            </group>
+                            <group string="Información Cuotas" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}">
+                                <field name="cantidad_cuotas" attrs="{'invisible': [('modalidad_pago','=','pago_unico')], 'readonly': [('cuotas_pagadas','>=','1')]}" force_save="1"/>
+                                <field name="cuotas_pagadas" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}" readonly="1" force_save="1"/>
+                                <field name="cuotas_restantes" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}" readonly="1" force_save="1"/>
+                            </group>
+                            <group string="Información Pago Único" attrs="{'invisible': [('modalidad_pago','=','cuotas')]}">
+                                <span>Un único pago en pago único será realizado y la cita <br/> quedará cerrada de inmediato.</span>
+                            </group>
+                        </group>
+                        <group name="note_group" col="2">
+                            <group class="oe_subtotal_footer oe_right" colspan="2" name="sale_total">
+                                <field name="pago_cuota" readonly="1" force_save="1" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}"/>
+                                <div class="oe_subtotal_footer_separator oe_inline o_td_label">
+                                    <label for="pago_total"/>
+                                </div>
+                                <field name="pago_total" nolabel="1" class="oe_subtotal_footer_separator" />
+                            </group>
+                            <div class="oe_clear"/>
+                        </group>
+                        <footer>
+                            <button name="add_pago" type="object"
+                                     string="Añadir pago" class="oe_highlight"/>
+                            <button special="cancel" string="Cancelar"/>
+                        </footer>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <act_window id="lanzar_wizard_pago"
+        name="Añadir pagos a cita"
+        res_model="besteeth.wizardpago"
+        view_mode="form"
+        target="new"/>
+
+    </data>
+</odoo>

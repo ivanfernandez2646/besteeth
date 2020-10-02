@@ -1,0 +1,16 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+doctor_administrador,doctor admin,model_besteeth_doctor,group_admin,1,1,1,1
+cita_administrador,cita admin,model_besteeth_cita,group_admin,1,1,1,1
+cliente_administrador,cliente admin,model_besteeth_cliente,group_admin,1,1,1,1
+servicio_administrador,servicio admin,model_besteeth_servicio,group_admin,1,1,1,1
+pago_administrador,pago admin,model_besteeth_pago,group_admin,1,1,1,1
+configuracion_administrador, configuracion admin,model_besteeth_configuracion,group_admin,1,1,1,1
+
+doctor_remote_client,doctor remote,model_besteeth_doctor,group_remote_client,1,0,0,0
+cita_remote_client,cita remote,model_besteeth_cita,group_remote_client,1,1,1,1
+cliente_remote_client,cliente remote,model_besteeth_cliente,group_remote_client,1,1,0,0
+servicio_remote_client,servicio remote,model_besteeth_servicio,group_remote_client,1,0,0,0
+pago_remote_client,pago remote,model_besteeth_pago,group_remote_client,1,0,0,0
+configuracion_remote_client, configuracion remote,model_besteeth_configuracion,group_remote_client,1,0,0,0
+

@@ -1,0 +1,94 @@
+<odoo>
+    <data>
+
+        <!-- Tree -->
+        <record model="ir.ui.view" id="besteeth_pago_tree">
+            <field name="name">besteeth.pago.tree</field>
+            <field name="model">besteeth.pago</field>
+            <field name="arch" type="xml">
+                <tree create="false">
+                    <field name="fecha_hora"/>
+                    <field name="modalidad_pago"/>
+                    <field name="cita_id"/>
+                    <field name="cliente_id"/>
+                    <field name="servicio_id"/>
+                    <field name="pago_cuota"/>
+                    <field name="cantidad_cuotas" optional="hide"/>
+                    <field name="cuotas_pagadas" optional="hide"/>
+                    <field name="cuotas_restantes" optional="hide"/>
+                    <field name="pago_total"/>
+                </tree>
+            </field>
+        </record>
+
+        <!-- Form
+        <record model="ir.ui.view" id="besteeth_pago_form">
+            <field name="name">besteeth.pago.form</field>
+            <field name="model">besteeth.pago</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <div class="oe_title">
+                          <label for="fecha_hora" class="oe_edit_only"/>
+                          <h1><field name="fecha_hora" placeholder="Indique el nombre del servicio"/></h1>
+                        </div>
+                        <group string="Información general">
+                            <field name="modalidad_pago"/>
+                            <label for="pago_cuota" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}"/>
+                            <div attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}">
+                                <field name="pago_cuota"  class="oe_inline"/>
+                                <span class="oe_inline oe_read_only"> €</span>
+                            </div>
+                            <field name="cantidad_cuotas" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}"/>
+                            <field name="cuotas_pagadas" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}"/>
+                            <field name="cuotas_restantes" attrs="{'invisible': [('modalidad_pago','=','pago_unico')]}"/>
+                            <label for="pago_total"/>
+                            <div>
+                                <field name="pago_total" placeholder="Indique el precio del servicio" class="oe_inline"/>
+                                <span class="oe_inline oe_read_only"> €</span>
+                            </div>
+                            <field name="cita_id"/>
+                            <field name="cliente_id"/>
+                            <field name="servicio_id"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record> -->
+
+        <!-- Search -->
+        <record model="ir.ui.view" id="besteeth_pago_search">
+            <field name="name">besteeth.pago.search</field>
+            <field name="model">besteeth.pago</field>
+            <field name="arch" type="xml">
+                <search>
+                    <filter name="modalidad_pago_unica" string="Pago Único"
+                            domain="[('modalidad_pago','=','pago_unico')]"/>
+                    <filter name="modalidad_pago_cuotas" string="Pago en Cuotas"
+                            domain="[('modalidad_pago','=','cuotas')]"/>
+                    <group>
+                        <filter name="agrupar_clientes" string="Clientes" context="{'group_by':'cliente_id'}"/>
+                    </group>
+                    <group>
+                        <filter name="agrupar_citas" string="Citas" context="{'group_by':'cita_id'}"/>
+                    </group>
+                    <group>
+                        <filter name="agrupar_fecha" string="Fechas" context="{'group_by':'fecha_hora:day'}"/>
+                    </group>
+                    <group>
+                        <filter name="agrupar_servicios" string="Servicios" context="{'group_by':'servicio_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+
+        <!-- Acción de ventana -->
+        <record model="ir.actions.act_window" id="besteeth.pago_action_window">
+            <field name="name">Pagos</field>
+            <field name="res_model">besteeth.pago</field>
+            <field name="view_mode">tree,search,graph</field>
+            <field name="context">{'search_default_agrupar_clientes': 1,'search_default_agrupar_citas': 1}</field>
+        </record>
+
+    </data>
+</odoo>

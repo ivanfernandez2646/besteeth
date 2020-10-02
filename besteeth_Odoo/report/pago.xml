@@ -1,0 +1,64 @@
+<odoo>
+    <report
+            id="report_pago"
+            model="besteeth.pago"
+            string="Impresión pago"
+            name="besteeth.report_pago_view"
+            file="besteeth.report_pago"
+            report_type="qweb-html"/>
+
+    <template id="besteeth.report_pago_view">
+        <t t-call="web.html_container">
+            <table>
+                <t t-foreach="docs" t-as="doc">
+                    <t t-call="web.external_layout">
+                        <h2>
+                            JUSTIFICANTE DE PAGO
+                        </h2>
+                        <div class="row">
+                            <div class="col-xs-6 m-4">
+                                <h5><b>Modalidad pago</b>:
+                                    <span t-field="doc.modalidad_pago"/>
+                                </h5>
+                                <t t-if="doc.modalidad_pago == 'cuotas'">
+                                    <h5>
+                                        <b>Cantidad cuotas:</b>
+                                        <span t-field="doc.cantidad_cuotas"/>
+                                    </h5>
+                                    <h5>
+                                        <b>Cuotas pagadas:</b>
+                                        <span t-field="doc.cuotas_pagadas"/>
+                                    </h5>
+                                    <h5>
+                                        <b>Cuotas restantes:</b>
+                                        <span t-field="doc.cuotas_restantes"/>
+                                    </h5>
+                                </t>
+                            </div>
+                            <div class="col-xs-6 m-4">
+                                <h5><b>Cliente</b>:
+                                    <span t-field="doc.cliente_id"/>
+                                </h5>
+                                <h5>
+                                    <b>Cita:</b>
+                                    <span t-field="doc.cita_id"/>
+                                </h5>
+                                <h5>
+                                    <b>Servicio:</b>
+                                    <span t-field="doc.servicio_id"/>
+                                </h5>
+                            </div>
+                        </div>
+                        <t t-if="doc.modalidad_pago == 'cuotas'">
+                            <h3 class="mt-5"><b>Total:</b> <span class="text-danger font-weight-bold" t-esc="'%.2f€'% doc.pago_cuota"/></h3>
+                        </t>
+                        <t t-if="doc.modalidad_pago == 'pago_unico'">
+                            <h3 class="mt-5"><b>Total:</b> <span class="text-danger font-weight-bold" t-esc="'%.2f€'% doc.pago_total"/></h3>
+                        </t>
+                        <p>Pago realizado y validado. Fecha: <span t-esc="context_timestamp(doc.fecha_hora).strftime('%Y-%m-%d %H:%M')"/></p>
+                    </t>
+                </t>
+            </table>
+        </t>
+    </template>
+</odoo>
