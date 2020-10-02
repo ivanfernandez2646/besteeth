@@ -5,7 +5,7 @@
 <i>"This is my biggest project until the date. I passed my final project of 3 months with a mark of 10. I spent a lot of hours in the development of this project. For more questions asked me.
 
 In the following document the work developed for the realization of an administrative management system for dental clinics is exposed, 
-which combines a server part performed in an ERP (Enterprise Resource Planning) called <b>Odoo</b>, together with a client part developed in <b>Android<>/b>.
+which combines a server part performed in an ERP (Enterprise Resource Planning) called <b>Odoo</b>, together with a client part developed in <b>Android</b>.
 
 
 The objective of the developed environment is the integration of smalls dental clinics with a tight budget, to the technologies of 21st century.
