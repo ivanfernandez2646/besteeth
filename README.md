@@ -2,7 +2,7 @@
 
 (Comments -- Text subtracted from private own documentation. For more info contact me)
 
-This is my biggest project until the date. Contact me whatever is your doubt! I passed my final project of 3 months with a mark of 10. I spent a lot of hours in the development of this project. For more questions asked me.
+This is my biggest project until the date. I passed my final project of 3 months with a mark of 10. I spent a lot of hours in the development of this project. For more questions asked me.
 
 In the following document the work developed for the realization of an administrative management system for dental clinics is exposed, 
 which combines a server part performed in an ERP (Enterprise Resource Planning) called Odoo, together with a client part developed in Android.
