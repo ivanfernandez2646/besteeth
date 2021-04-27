@@ -1,4 +1,6 @@
 # Besteeth
+https://drive.google.com/file/d/1n2IEu7kDk4_yEHfC-uraXu4LKkMgROP_/view?usp=sharing  
+
 
 (Comments -- Text subtracted from private own documentation. For more info contact me)
 
@@ -20,7 +22,5 @@ The document contains all kinds of information about the development of the full
 
 
 I attach this image. You can show both apps (Intranet(Odoo) and Client App(Android)) running at the same time. Also, I attach a video in which you can see all explanation about the project. Take a look and give me your feedback.
-https://drive.google.com/file/d/1n2IEu7kDk4_yEHfC-uraXu4LKkMgROP_/view?usp=sharing  
-
 
 <img src="https://i.ibb.co/1fwBBwd/Capture.jpg" alt="Capture" border="0">
